@@ -1,0 +1,177 @@
+import { Flashcard } from '../types';
+
+export const initialFlashcards: Flashcard[] = [
+  // 1. DERIVATIVE FORMULAS
+  {
+    id: 'fc_diff_sin',
+    deck: 'derivative_formulas',
+    category: 'Trigonometric Derivatives',
+    frontPrompt: 'What is the derivative of sin(x)?',
+    frontLatex: '\\frac{d}{dx}[\\sin x] = ?',
+    backResponse: 'cos(x)',
+    backLatex: '\\cos x',
+    explanation: 'The derivative of sine is positive cosine.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_diff_cos',
+    deck: 'derivative_formulas',
+    category: 'Trigonometric Derivatives',
+    frontPrompt: 'What is the derivative of cos(x)?',
+    frontLatex: '\\frac{d}{dx}[\\cos x] = ?',
+    backResponse: '-sin(x)',
+    backLatex: '-\\sin x',
+    explanation: 'Remember co-functions (cos, cot, csc) have negative derivatives.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_diff_tan',
+    deck: 'derivative_formulas',
+    category: 'Trigonometric Derivatives',
+    frontPrompt: 'What is the derivative of tan(x)?',
+    frontLatex: '\\frac{d}{dx}[\\tan x] = ?',
+    backResponse: 'sec^2(x)',
+    backLatex: '\\sec^2 x',
+    explanation: 'Derived via quotient rule on sin(x)/cos(x).',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_diff_arctan',
+    deck: 'derivative_formulas',
+    category: 'Inverse Trig',
+    frontPrompt: 'What is the derivative of arctan(x)?',
+    frontLatex: '\\frac{d}{dx}[\\arctan x] = ?',
+    backResponse: '1 / (1 + x^2)',
+    backLatex: '\\frac{1}{1 + x^2}',
+    explanation: 'Standard inverse tangent derivative formula.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_diff_ln',
+    deck: 'derivative_formulas',
+    category: 'Logarithmic Derivatives',
+    frontPrompt: 'What is the derivative of ln|x| for x != 0?',
+    frontLatex: '\\frac{d}{dx}[\\ln |x|] = ?',
+    backResponse: '1 / x',
+    backLatex: '\\frac{1}{x}',
+    explanation: 'Valid for all non-zero x due to absolute value.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_diff_ax',
+    deck: 'derivative_formulas',
+    category: 'General Exponential',
+    frontPrompt: 'What is the derivative of a^x for a > 0, a != 1?',
+    frontLatex: '\\frac{d}{dx}[a^x] = ?',
+    backResponse: 'a^x * ln(a)',
+    backLatex: 'a^x \\ln a',
+    explanation: 'Rewriting as e^(x ln a) and applying chain rule gives a^x ln a.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+
+  // 2. INTEGRAL FORMULAS
+  {
+    id: 'fc_integ_power',
+    deck: 'integral_formulas',
+    category: 'Power Rule',
+    frontPrompt: 'What is the integral of x^n dx for n != -1?',
+    frontLatex: '\\int x^n \\, dx = ? \\quad (n \\neq -1)',
+    backResponse: 'x^(n+1) / (n+1) + C',
+    backLatex: '\\frac{x^{n+1}}{n+1} + C',
+    explanation: 'Add 1 to exponent and divide by the new exponent, plus arbitrary constant C.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_integ_sec2',
+    deck: 'integral_formulas',
+    category: 'Trig Integrals',
+    frontPrompt: 'What is the integral of sec^2(x) dx?',
+    frontLatex: '\\int \\sec^2 x \\, dx = ?',
+    backResponse: 'tan(x) + C',
+    backLatex: '\\tan x + C',
+    explanation: 'Direct antiderivative of sec^2(x) is tan(x) + C.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_integ_inv_sqrt',
+    deck: 'integral_formulas',
+    category: 'Inverse Trig Integrals',
+    frontPrompt: 'What is the integral of 1 / sqrt(1 - x^2) dx?',
+    frontLatex: '\\int \\frac{1}{\\sqrt{1 - x^2}} \\, dx = ?',
+    backResponse: 'arcsin(x) + C',
+    backLatex: '\\arcsin x + C',
+    explanation: 'Inverse sine antiderivative.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+
+  // 3. COMMON MISTAKES
+  {
+    id: 'fc_mistake_sqrt_sum',
+    deck: 'common_mistakes',
+    category: 'Algebraic Fallacies in Calculus',
+    frontPrompt: 'Is sqrt(a^2 + b^2) equal to a + b?',
+    frontLatex: '\\sqrt{a^2 + b^2} \\stackrel{?}{=} a + b',
+    backResponse: 'NO! Square root does not distribute across addition.',
+    backLatex: '\\sqrt{a^2 + b^2} \\neq a + b',
+    explanation: 'Example: sqrt(3^2 + 4^2) = sqrt(25) = 5 != 3 + 4 = 7. Never simplify sqrt(x^2 + 1) to x + 1 in integrals!',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_mistake_product_diff',
+    deck: 'common_mistakes',
+    category: 'Calculus Misconceptions',
+    frontPrompt: 'Is d/dx [f(x) * g(x)] equal to f\'(x) * g\'(x)?',
+    frontLatex: '\\frac{d}{dx}[f(x)g(x)] \\stackrel{?}{=} f\'(x)g\'(x)',
+    backResponse: 'NO! Use the Product Rule: f\'(x)g(x) + f(x)g\'(x).',
+    backLatex: '\\frac{d}{dx}[fg] = f\'g + fg\'',
+    explanation: 'The derivative of a product is NOT the product of the derivatives.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  },
+  {
+    id: 'fc_mistake_chain_omit',
+    deck: 'common_mistakes',
+    category: 'Chain Rule Blunders',
+    frontPrompt: 'What is the common mistake when differentiating sin(x^2)?',
+    frontLatex: '\\frac{d}{dx}[\\sin(x^2)] \\neq \\cos(x^2)',
+    backResponse: 'Forgetting the inner derivative! It is 2x * cos(x^2).',
+    backLatex: '\\frac{d}{dx}[\\sin(x^2)] = 2x \\cos(x^2)',
+    explanation: 'Chain rule requires multiplying by the derivative of the interior argument x^2, which is 2x.',
+    repetitions: 0,
+    intervalDays: 1,
+    easeFactor: 2.5,
+    nextReviewDate: Date.now()
+  }
+];
