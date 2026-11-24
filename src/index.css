@@ -5,6 +5,15 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', monospace;
   --font-cinzel: 'Cinzel', serif;
+  
+  /* Cosmic Palette Variables */
+  --cosmic-obsidian: #030208;
+  --cosmic-violet: #8b5cf6;
+  --cosmic-ultraviolet: #6d28d9;
+  --cosmic-magenta: #d946ef;
+  --cosmic-crimson: #f43f5e;
+  --cosmic-gold: #f59e0b;
+  --cosmic-emerald: #10b981;
 }
 
 * {
@@ -15,25 +24,79 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #090b10;
+  background-color: #04030a;
   color: #f1f5f9;
   min-height: 100vh;
   overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(217, 70, 239, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 60%);
 }
 
-/* Glassmorphism Styles */
+/* Glassmorphism & Cosmic Panels */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 8, 22, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .glass-panel-glow {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+  background: rgba(14, 11, 28, 0.85);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(217, 70, 239, 0.35);
+  box-shadow: 
+    0 10px 40px -10px rgba(139, 92, 246, 0.3),
+    inset 0 0 20px rgba(217, 70, 239, 0.05);
+}
+
+.cosmic-hologram {
+  position: relative;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(217, 70, 239, 0.04), rgba(245, 158, 11, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.cosmic-hologram::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 55%
+  );
+  transform: rotate(30deg);
+  animation: hologramSweep 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes hologramSweep {
+  0% { transform: translateY(-50%) rotate(30deg); }
+  100% { transform: translateY(50%) rotate(30deg); }
+}
+
+/* Glowing Neon Borders */
+.glow-border-violet {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+}
+
+.glow-border-magenta {
+  border-color: rgba(217, 70, 239, 0.4);
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.25);
+}
+
+.glow-border-gold {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
 }
 
 /* Custom Scrollbar */
@@ -42,30 +105,32 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #090b10;
+  background: #04030a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #231b42;
   border-radius: 9999px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #432b78;
+  border-color: rgba(217, 70, 239, 0.5);
 }
 
 /* KaTeX custom sizing & overflow */
 .katex-display {
-  margin: 0.5em 0 !important;
+  margin: 0.6em 0 !important;
 }
 .katex {
   font-size: 1.05em !important;
-  color: #c7d2fe !important;
+  color: #e0e7ff !important;
 }
 
 /* Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -74,10 +139,42 @@ body {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Utility layout helpers */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spinSlow {
+  animation: spinSlow 30s linear infinite;
+}
+
+/* Typography Helpers */
 .font-cinzel {
   font-family: var(--font-cinzel);
+}
+
+/* Gradient Text Shimmer */
+.text-shimmer {
+  background: linear-gradient(90deg, #c084fc, #f472b6, #fbbf24, #c084fc);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 6s linear infinite;
+}
+
+@keyframes textShimmer {
+  to { background-position: 200% center; }
 }

@@ -19,33 +19,36 @@ interface NavSection {
     label: string;
     icon: React.ElementType;
     badge?: string;
+    badgeColor?: string;
   }[];
 }
 
 const NAV_SECTIONS: NavSection[] = [
   {
+    title: 'Cosmic 3D Continuum',
+    items: [
+      { id: 'universe', label: '3D Cosmic Continuum', icon: Orbit, badge: 'Flagship 3D', badgeColor: 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/30' },
+      { id: 'visual_3d', label: '3D Manifolds & Calabi-Yau', icon: Box, badge: 'WebGL', badgeColor: 'bg-violet-500/20 text-violet-300 border-violet-500/30' },
+      { id: 'graphing_studio', label: 'Graphing & 3D Surfaces', icon: Activity, badge: 'Surfaces', badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' },
+      { id: 'all_subjects', label: 'All Mathematical Atlas', icon: BookOpen }
+    ]
+  },
+  {
     title: 'Formula & AI Intelligence',
     items: [
-      { id: 'formula_library', label: 'Formula Encyclopedia', icon: BookOpen, badge: 'Library' },
-      { id: 'mathverse_ai', label: 'Hypatia AI Assistant', icon: Bot, badge: 'Free AI' },
-      { id: 'geometry_universe', label: 'Geometry Universe', icon: Compass, badge: '2D & 3D' },
+      { id: 'formula_library', label: 'Formula Encyclopedia', icon: BookOpen, badge: 'SM-2 Memory', badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30' },
+      { id: 'mathverse_ai', label: 'Hypatia AI Assistant', icon: Bot, badge: 'Free Solver', badgeColor: 'bg-violet-500/20 text-violet-300 border-violet-500/30' },
+      { id: 'geometry_universe', label: '3D Geometry Universe', icon: Compass, badge: 'Solids' },
       { id: 'topic_quizzes', label: 'Complete Topic Quizzes', icon: GraduationCap, badge: 'Quizzes' }
     ]
   },
   {
     title: 'Discovery & Research Labs',
     items: [
-      { id: 'graphing_studio', label: 'Graphing & 3D Studio', icon: Activity, badge: '2D/3D' },
       { id: 'discovery_lab', label: 'Computational Discovery Lab', icon: Sparkles, badge: 'Fractals' },
-      { id: 'personal_notebook', label: 'Personal Math Notebook', icon: BookMarked, badge: 'LaTeX' }
-    ]
-  },
-  {
-    title: 'Universal Cosmos',
-    items: [
-      { id: 'universe', label: '3D Mathematical Universe', icon: Orbit },
-      { id: 'visual_3d', label: '3D Manifolds & Topologies', icon: Box },
-      { id: 'all_subjects', label: 'All Mathematical Subjects', icon: BookOpen }
+      { id: 'personal_notebook', label: 'Personal Math Notebook', icon: BookMarked, badge: 'LaTeX' },
+      { id: 'proof_arena', label: 'Proof Arena & Studio', icon: ShieldCheck },
+      { id: 'daily_mystery', label: 'Daily Mystery Challenge', icon: Calendar }
     ]
   },
   {
@@ -69,24 +72,17 @@ const NAV_SECTIONS: NavSection[] = [
     ]
   },
   {
-    title: 'Deduction & Proof Arena',
+    title: 'Deduction & Tools',
     items: [
       { id: 'tutor', label: 'Socratic Tutor (Hypatia)', icon: Bot },
       { id: 'detective', label: 'Mathematical Detective', icon: Search },
-      { id: 'proof_arena', label: 'Proof Arena & Studio', icon: ShieldCheck },
-      { id: 'daily_mystery', label: 'Daily Mystery Challenge', icon: Calendar }
-    ]
-  },
-  {
-    title: 'Tools & Laboratory',
-    items: [
       { id: 'sandbox', label: 'Mathematical Sandbox', icon: Terminal },
       { id: 'toolbox', label: 'Interactive Toolbox', icon: Wrench },
       { id: 'visual_library', label: 'Visual Math Library', icon: Eye }
     ]
   },
   {
-    title: 'Analytics & Knowledge',
+    title: 'Analytics & Dossier',
     items: [
       { id: 'dashboard', label: 'Student Dossier & Radar', icon: BarChart2 },
       { id: 'error_analysis', label: 'Error Analysis Center', icon: AlertTriangle },
@@ -100,10 +96,10 @@ const NAV_SECTIONS: NavSection[] = [
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelectTab }) => {
   return (
-    <aside className="w-64 border-r border-slate-800 bg-[#090b10] h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-4 space-y-6 custom-scrollbar shrink-0 hidden md:block">
+    <aside className="w-64 border-r border-violet-500/20 bg-[#04030a]/90 backdrop-blur-2xl h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-4 space-y-6 custom-scrollbar shrink-0 hidden md:block shadow-[4px_0_30px_rgba(0,0,0,0.5)]">
       {NAV_SECTIONS.map((section, sIdx) => (
         <div key={sIdx} className="space-y-1.5">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3 block mb-1">
+          <span className="text-[10px] font-bold text-fuchsia-400 uppercase tracking-widest px-3 block mb-1">
             {section.title}
           </span>
 
@@ -120,17 +116,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelectTab }) => {
                   }}
                   className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center justify-between group ${
                     isActive
-                      ? 'bg-indigo-600/20 text-indigo-300 font-semibold border border-indigo-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-850/60'
+                      ? 'bg-gradient-to-r from-violet-600/30 via-fuchsia-600/20 to-transparent text-white font-semibold border-l-2 border-fuchsia-400 shadow-[0_0_20px_rgba(217,70,239,0.15)]'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-violet-950/30'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 truncate">
-                    <Icon size={15} className={isActive ? 'text-indigo-400' : 'text-slate-500 group-hover:text-slate-300'} />
+                    <Icon size={15} className={isActive ? 'text-fuchsia-400' : 'text-slate-500 group-hover:text-violet-300'} />
                     <span className="truncate">{item.label}</span>
                   </div>
 
                   {item.badge && (
-                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/30 text-indigo-300">
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border ${
+                      item.badgeColor || 'bg-violet-500/20 text-violet-300 border-violet-500/30'
+                    }`}>
                       {item.badge}
                     </span>
                   )}

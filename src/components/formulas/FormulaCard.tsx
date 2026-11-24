@@ -49,7 +49,7 @@ export const FormulaCard: React.FC<FormulaCardProps> = ({
         sound.playClick();
         onOpenDetail(formula);
       }}
-      className="group relative rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 p-5 transition-all duration-200 hover:shadow-xl hover:shadow-indigo-500/10 flex flex-col justify-between cursor-pointer overflow-hidden backdrop-blur-md"
+      className="group relative rounded-2xl bg-[#080616]/90 border border-violet-500/20 hover:border-fuchsia-500/50 p-5 transition-all duration-200 hover:shadow-xl hover:shadow-fuchsia-500/15 flex flex-col justify-between cursor-pointer overflow-hidden backdrop-blur-xl"
     >
       <div className="space-y-3">
         {/* Top Badges & Controls */}

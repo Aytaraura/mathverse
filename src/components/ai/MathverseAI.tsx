@@ -176,7 +176,7 @@ export const MathverseAI: React.FC<MathverseAIProps> = ({ initialPrompt, onNavig
   return (
     <div className="space-y-6 py-4 animate-fadeIn">
       {/* Top Banner */}
-      <div className="p-8 rounded-3xl bg-gradient-to-r from-slate-950 via-purple-950/40 to-slate-950 border border-slate-800 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 backdrop-blur-xl">
+      <div className="p-8 rounded-3xl bg-gradient-to-r from-[#070514] via-[#160a32]/70 to-[#070514] border border-violet-500/20 shadow-[0_0_50px_rgba(139,92,246,0.12)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 backdrop-blur-2xl">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center gap-1.5">

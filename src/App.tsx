@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/common/Navbar';
 import { Sidebar } from './components/common/Sidebar';
+import { CosmicBackgroundCanvas } from './components/universe/CosmicBackgroundCanvas';
 
 // Major Core Modules
 import { FormulaLibrary } from './components/formulas/FormulaLibrary';
@@ -11,7 +12,7 @@ import { GraphingStudio } from './components/tools/GraphingStudio';
 import { DiscoveryLab } from './components/features/DiscoveryLab';
 import { PersonalNotebook } from './components/features/PersonalNotebook';
 
-// Classical Mathverse Sections
+// Classical & 3D Mathverse Sections
 import { MathUniverse3D } from './components/universe/MathUniverse3D';
 import { VisualMath3D } from './components/universe/VisualMath3D';
 import { AllSubjectsAtlas } from './components/features/AllSubjectsAtlas';
@@ -45,7 +46,9 @@ import { MathEncyclopedia } from './components/features/MathEncyclopedia';
 import { ResearchExplorer } from './components/features/ResearchExplorer';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('formula_library');
+  // Start on 3D Cosmic Continuum by default
+  const [activeTab, setActiveTab] = useState<string>('universe');
+  const [cosmicBgEnabled, setCosmicBgEnabled] = useState<boolean>(true);
   const [aiPrompt, setAiPrompt] = useState<string>('');
   const [quizTopic, setQuizTopic] = useState<string>('all');
 
@@ -61,7 +64,29 @@ export const App: React.FC = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      // ─── UPGRADE CORE SECTIONS ───
+      // ─── COSMIC 3D & CORE UPGRADE ───
+      case 'universe':
+        return (
+          <div className="space-y-6">
+            <MathUniverse3D onSelectRealm={(name) => {
+              if (name.includes('Calculus')) setActiveTab('calculus_academy');
+              else if (name.includes('Calabi') || name.includes('Manifold')) setActiveTab('visual_3d');
+              else if (name.includes('Torus') || name.includes('Knot')) setActiveTab('formula_library');
+              else if (name.includes('Hypercube') || name.includes('Tesseract')) setActiveTab('geometry_universe');
+              else if (name.includes('Stellated')) setActiveTab('discovery_lab');
+              else if (name.includes('Riemann')) setActiveTab('graphing_studio');
+              else setActiveTab('all_subjects');
+            }} />
+          </div>
+        );
+      case 'visual_3d':
+        return <VisualMath3D />;
+      case 'graphing_studio':
+        return <GraphingStudio />;
+      case 'discovery_lab':
+        return <DiscoveryLab />;
+      case 'personal_notebook':
+        return <PersonalNotebook />;
       case 'formula_library':
         return (
           <FormulaLibrary
@@ -86,25 +111,6 @@ export const App: React.FC = () => {
             onNavigateTopic={(tab) => setActiveTab(tab)}
           />
         );
-      case 'graphing_studio':
-        return <GraphingStudio />;
-      case 'discovery_lab':
-        return <DiscoveryLab />;
-      case 'personal_notebook':
-        return <PersonalNotebook />;
-
-      // ─── CLASSICAL & ADVANCED MATHVERSE SECTIONS ───
-      case 'universe':
-        return (
-          <div className="space-y-6">
-            <MathUniverse3D onSelectRealm={(name) => {
-              if (name.includes('Calculus')) setActiveTab('calculus_academy');
-              else if (name.includes('Algebra') || name.includes('Number') || name.includes('Geometric')) setActiveTab('all_subjects');
-            }} />
-          </div>
-        );
-      case 'visual_3d':
-        return <VisualMath3D />;
       case 'all_subjects':
         return (
           <AllSubjectsAtlas
@@ -112,6 +118,8 @@ export const App: React.FC = () => {
             onLaunchQuiz={handleLaunchQuiz}
           />
         );
+
+      // ─── CALCULUS ACADEMY ───
       case 'calculus_academy':
         return <CalculusAcademy onLaunchExam={() => setActiveTab('calculus_exams')} />;
       case 'calculus_exams':
@@ -124,6 +132,8 @@ export const App: React.FC = () => {
         return <FtcExplorer />;
       case 'active_recall':
         return <CalculusActiveRecall />;
+
+      // ─── COMPETITIONS & BATTLES ───
       case 'bosses':
         return <BossBattle />;
       case 'duels':
@@ -132,6 +142,8 @@ export const App: React.FC = () => {
         return <OlympiadCenter />;
       case 'formula_battle':
         return <FormulaBattle />;
+
+      // ─── DEDUCTION & TOOLS ───
       case 'tutor':
         return <SocraticTutor />;
       case 'detective':
@@ -146,6 +158,8 @@ export const App: React.FC = () => {
         return <MathToolbox />;
       case 'visual_library':
         return <VisualMathLibrary />;
+
+      // ─── ANALYTICS & DOSSIER ───
       case 'dashboard':
         return <StudentDashboard onNavigateTab={(tab) => setActiveTab(tab)} />;
       case 'error_analysis':
@@ -160,19 +174,27 @@ export const App: React.FC = () => {
         return <ResearchExplorer />;
       default:
         return (
-          <FormulaLibrary
-            onNavigateAI={handleLaunchAI}
-            onNavigateQuiz={handleLaunchQuiz}
-          />
+          <MathUniverse3D onSelectRealm={(name) => {
+            if (name.includes('Calculus')) setActiveTab('calculus_academy');
+            else setActiveTab('all_subjects');
+          }} />
         );
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#090b10] text-slate-100 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
-      <Navbar activeTab={activeTab} onSelectTab={setActiveTab} />
+    <div className="min-h-screen bg-[#030208] text-slate-100 flex flex-col font-sans relative selection:bg-fuchsia-500/30 selection:text-fuchsia-200">
+      {/* Real-Time Ambient 3D Cosmic WebGL Background */}
+      <CosmicBackgroundCanvas enabled={cosmicBgEnabled} />
+
+      <Navbar 
+        activeTab={activeTab} 
+        onSelectTab={setActiveTab} 
+        cosmicBgEnabled={cosmicBgEnabled}
+        onToggleCosmicBg={() => setCosmicBgEnabled(!cosmicBgEnabled)}
+      />
       
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative z-10">
         <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
 
         <main className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">

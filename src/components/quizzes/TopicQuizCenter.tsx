@@ -150,20 +150,20 @@ export const TopicQuizCenter: React.FC<TopicQuizCenterProps> = ({
   return (
     <div className="space-y-6 py-4 animate-fadeIn">
       {/* Banner */}
-      <div className="p-8 rounded-3xl bg-gradient-to-r from-slate-950 via-indigo-950/40 to-slate-950 border border-slate-800 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 backdrop-blur-xl">
+      <div className="p-8 rounded-3xl bg-gradient-to-r from-[#070514] via-[#140a30]/70 to-[#070514] border border-violet-500/20 shadow-[0_0_50px_rgba(139,92,246,0.12)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 backdrop-blur-2xl">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center gap-1.5">
-              <GraduationCap size={14} /> Topic Assessment & Mastery Center
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30 flex items-center gap-1.5 shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+              <GraduationCap size={14} className="text-violet-400" /> Topic Assessment & Mastery Center
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
               Adaptive Practice for Every Subject
             </span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight font-cinzel">
             Comprehensive Mathematical Quizzes
           </h1>
-          <p className="text-slate-400 text-sm max-w-2xl">
+          <p className="text-slate-300 text-sm max-w-2xl">
             Test and verify your understanding across all subjects: arithmetic, algebra, geometry, trigonometry, calculus, probability, and Olympiad mathematics.
           </p>
         </div>

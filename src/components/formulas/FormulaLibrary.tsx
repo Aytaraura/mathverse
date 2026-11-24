@@ -119,20 +119,20 @@ export const FormulaLibrary: React.FC<FormulaLibraryProps> = ({ onNavigateAI, on
   return (
     <div className="space-y-8 py-4 animate-fadeIn">
       {/* Top Banner */}
-      <div className="relative rounded-3xl bg-gradient-to-r from-slate-950 via-indigo-950/40 to-slate-950 border border-slate-800 p-8 shadow-2xl overflow-hidden backdrop-blur-xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative rounded-3xl bg-gradient-to-r from-[#070514] via-[#140a30]/70 to-[#070514] border border-violet-500/20 p-8 shadow-[0_0_50px_rgba(139,92,246,0.12)] overflow-hidden backdrop-blur-2xl">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center gap-1.5">
-              <BookOpen size={14} /> Complete Mathematical Reference
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30 flex items-center gap-1.5 shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+              <BookOpen size={14} className="text-violet-400" /> Complete Mathematical Reference
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-              <CheckCircle size={14} /> 100% Mathematically Rigorous & Verified
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+              <CheckCircle size={14} className="text-emerald-400" /> 100% Mathematically Rigorous & Verified
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight font-cinzel">
             Formula Encyclopedia & Memory Trainer
           </h1>
 
@@ -149,8 +149,8 @@ export const FormulaLibrary: React.FC<FormulaLibraryProps> = ({ onNavigateAI, on
               }}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 ${
                 activeView === 'library'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-fuchsia-600/25 border border-fuchsia-400/60'
+                  : 'bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <BookOpen size={15} />
@@ -164,8 +164,8 @@ export const FormulaLibrary: React.FC<FormulaLibraryProps> = ({ onNavigateAI, on
               }}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 ${
                 activeView === 'trainer'
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
-                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-fuchsia-600 to-amber-600 text-white shadow-lg shadow-amber-600/25 border border-amber-400/60'
+                  : 'bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <Brain size={15} />
